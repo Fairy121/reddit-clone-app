@@ -38,16 +38,14 @@ let userRoute = require('./Routes/user');
 let communityRoute = require('./Routes/community');
 let communityMemberRoute = require('./Routes/communityMember');
 let postRoute = require('./Routes/post');
-const { createProxyMiddleware } = require('http-proxy-middleware');
 
-app.use('/api',createProxyMiddleware({target:'https://rachael-reddit-clone.herokuapp.com/api'}));
 
 app.use('api/user',userRoute);
 app.use('api/community',communityRoute);
 app.use('api/communityMember',communityMemberRoute);
 app.use('api/post',postRoute);
 
-app.get("*",(req,res) => {
+app.get("/",(req,res) => {
   res.sendFile(path.join(__dirname,"reddit-clone","build","index.html"))
 })
 
