@@ -4,7 +4,7 @@ const passport = require('passport');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const path = require("path");
-const PORT = process.env.PORT || 'https://rachael-reddit-clone.herokuapp.com/api';
+const PORT = process.env.PORT;
 app.use(express.json());
 app.use(cors({credentials:true,origin:'https://rachael-reddit-clone.herokuapp.com'}));
 
