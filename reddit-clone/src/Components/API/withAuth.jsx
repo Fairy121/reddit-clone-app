@@ -14,7 +14,7 @@ export default function withAuth(WrappedComponent) {
      
         retrieveData = async(url,request,data) => {
             try {
-                const response = await axios({method:request,url:`http://localhost:5000/${url}`,data,withCredentials:true});
+                const response = await axios({method:request,url:`/${url}`,data,withCredentials:true});
                 const result = await response;
                 this.setState({
                     data:result
