@@ -40,9 +40,6 @@ let communityMemberRoute = require('./Routes/communityMember');
 let postRoute = require('./Routes/post');
 
 
-app.use('api/user',userRoute);
-app.use('api/community',communityRoute);
-app.use('api/communityMember',communityMemberRoute);
 
 
 app.get("/",(req,res) => {
@@ -50,9 +47,12 @@ app.get("/",(req,res) => {
 })
 app.get('/api',(req,res) => {
   res.send('api section');
-  app.use('/post',postRoute);
-})
 
+})
+app.use('/api/user',userRoute);
+app.use('/api/community',communityRoute);
+app.use('/api/communityMember',communityMemberRoute);
+app.use('/api/post',postRoute);
 
 app.listen(PORT,() => {
     console.log(`listening at ${PORT}`)
