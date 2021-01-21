@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const path = require("path");
 const PORT = process.env.PORT || 5000;
 app.use(express.json());
-app.use(cors({credentials:true,origin:'http://localhost:3001'}));
+app.use(cors({credentials:true,origin:'https://rachael-reddit-clone.herokuapp.com'}));
 
 require('dotenv').config()
 
