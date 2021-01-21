@@ -43,10 +43,14 @@ let postRoute = require('./Routes/post');
 app.use('api/user',userRoute);
 app.use('api/community',communityRoute);
 app.use('api/communityMember',communityMemberRoute);
-app.use('api/post',postRoute);
+
 
 app.get("/",(req,res) => {
   res.sendFile(path.join(__dirname,"reddit-clone","build","index.html"))
+})
+app.get('/api',(req,res) => {
+  res.send('api section');
+  app.use('/post',postRoute);
 })
 
 
