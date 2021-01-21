@@ -46,7 +46,7 @@ export default function useAxios(url,request,payload,effect) {
         }
       
         try {
-            const response = await axios({method:request,url:`http://localhost:5000/${url}`,payload,withCredentials:true});
+            const response = await axios({method:request,url:`https://rachael-reddit-clone.herokuapp.com/api/${url}`,payload,withCredentials:true});
             const result = await response;
             
             setState(states.LOADED);
