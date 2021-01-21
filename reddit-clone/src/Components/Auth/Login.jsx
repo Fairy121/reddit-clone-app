@@ -25,9 +25,7 @@ import {LOGIN_USER,LOGIN_USER_FAILURE} from 'Redux/actions/Creators/AuthCreator'
             username,
             password
         }
-
-        let url = 'https://rachael-reddit-clone.herokuapp.com/user/login'
-        let loggedInUser = await withData(url,'POST',formData);
+        let loggedInUser = await withData('user/login','POST',formData);
         console.log(loginUser);
     
      
