@@ -18,24 +18,20 @@ import {LOGIN_USER,LOGIN_USER_FAILURE} from 'Redux/actions/Creators/AuthCreator'
  
     const loginUser = async(e) => {
         e.preventDefault();
-        let form = e.currentTarget;
-        let username = form['username'].value;
-        let password = form['password'].value;
-        let formData = {
+        const form = e.currentTarget;
+        const username = form['username'].value;
+        const password = form['password'].value;
+        const formData = {
             username,
             password
         }
-        let loggedInUser = await withData('user/login','POST',formData);
-        console.log(loginUser);
-    
-     
+        const loggedInUser = await withData('user/login','POST',formData);
 
-
-        let successData = {
+        const successData = {
             success:true,
             message:'You have logged in'
         }
-        let errorData = {
+        const errorData = {
             success:false,
             message:'Unable to log in, please try again later'
         }

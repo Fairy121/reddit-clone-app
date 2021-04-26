@@ -15,7 +15,6 @@ let states = {
 export default function useAxios(url,request,payload,effect) {
     const [data,setData] = useState(null);
     const [error,setError] = useState(null);
-    const [hasUpdated,setUpdate] = useState(false);
     const [state,setState] = useState(null);
     const params = useParams();
 
@@ -23,23 +22,7 @@ export default function useAxios(url,request,payload,effect) {
         withData(url,request,payload);
     }, [state,params,effect])
 
-    
-    
-
-    const checkUpdated = (res) => {
-        if(data) {
-            console.log(data);
-            let prevData = JSON.stringify(data);
-            let currentData = JSON.stringify(res.data);
-
-           
-                setState(states.LOADED)
         
-            
-        }
-      
-    }
-    
     const withData = async() => {
         if(!states) {
             setState(states.LOADING)

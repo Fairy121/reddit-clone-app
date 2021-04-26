@@ -4,7 +4,6 @@ import ArrowDropDown from '@material-ui/icons/ArrowDropDown';
 import { TabContext, TabPanel,Alert } from '@material-ui/lab';
 import { useStyles } from './style';
 import {withData} from '../../API/withData';
-import zIndex from '@material-ui/core/styles/zIndex';
 import {useLocation,useHistory} from 'react-router-dom';
 import {createSlug} from 'Helpers/createSlug';
 import useAxios from 'Hooks/useAxios';
@@ -19,10 +18,8 @@ export default function CreatePost(props) {
     const [message,setMessage] = useState(null);
     const theme = useTheme();
 
-    const classes = useStyles();
-     const AllCommunities = useAxios('community','GET',isModal);
-    // AllCommunities.withData('community','GET',isModal);
-    const [value,handleForm] = useForm(['title','desc']);
+    const AllCommunities = useAxios('community','GET',isModal);
+    const [value] = useForm(['title','desc']);
 
     useEffect(() => {
       
@@ -51,18 +48,16 @@ export default function CreatePost(props) {
             name
          }
     
-   
-         console.log(formObj);
-        
 
-        if(selectedCommunity.name == 'Choose a Community') {
+
+        if(selectedCommunity.name === 'Choose a Community') {
             setMessage({success:false,message:'Please select a community'});
         } else {
            
             let newPost = await withData(`post/${selectedCommunity.id}`,'POST',formObj);
             console.log(newPost);
     
-            if(newPost.status == '200') {
+            if(newPost.status === '200') {
                 setMessage({success:true,message:'Post Created'});
                 let slug = createSlug(selectedCommunity.name);
                  history.replace({pathname:`/r/${slug}`,state:{name:selectedCommunity.name,id:selectedCommunity.id,desc:selectedCommunity.desc}})

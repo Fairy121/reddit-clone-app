@@ -9,7 +9,7 @@ export default function Contentbody(props) {
     return (
         <>
         {getAllPosts && getAllPosts.data && getAllPosts.data.map((post,index) => {
-            let name = `r/ ${post.community_name}`;
+            const name = `r/ ${post.community_name}`;
             if(index <= 12 ) {
                 return (
                 <div key={index}>

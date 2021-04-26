@@ -5,7 +5,7 @@ import { theme } from './Components/Theme/theme';
 import Navbar from './Components/Navbar/navbar';
 import Main from './Components/Main/main';
 import {BrowserRouter as Router} from 'react-router-dom';
-import Test from 'Components/Main/test';
+
 
 function App() {
   return (

@@ -1,8 +1,8 @@
-let mongoose = require('mongoose');
-let Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 
-let CommunitySchema = new Schema({
+const CommunitySchema = new Schema({
     name:{
         type:String,
         required:true

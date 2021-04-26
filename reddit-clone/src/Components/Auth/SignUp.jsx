@@ -11,16 +11,16 @@ export default function Signup(props) {
 
     async function RegisterUser(e) {
         e.preventDefault();
-         let form = e.currentTarget;
+         const form = e.currentTarget;
          console.log(form);
-        let username = form['username'].value;
-        let password = form['password'].value;
-        let userData = {
+        const username = form['username'].value;
+        const password = form['password'].value;
+        const userData = {
            username,
            password
         }
         try {
-        let registerUser = await withData('user/register','POST',userData);
+        const registerUser = await withData('user/register','POST',userData);
         setMessage(registerUser.data);
         } catch(err) {
             console.log(err.message);
@@ -39,9 +39,8 @@ export default function Signup(props) {
                     <Typography variant='subtitle2'>Sign Up</Typography>
                 </Button> 
                <div style={{marginTop:'24px'}}>
-                   {console.log(message ? 'true' : 'false')}
- {message ? ( message.success ? <Alert severity='success'>{message.message}</Alert> :  <Alert severity='error'>{message.message}</Alert>):''};                  
-                {/* {message.message  && message.success ? <Alert severity='success'>{message.message}</Alert> :  <Alert severity='error'>{message.message}</Alert>} */}
+                {message ? ( message.success ? <Alert severity='success'>{message.message}</Alert> :  <Alert severity='error'>{message.message}</Alert>):''};                  
+            
                 </div>
             </form>
         </>

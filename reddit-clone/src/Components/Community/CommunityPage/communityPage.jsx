@@ -1,4 +1,4 @@
-import { Avatar, Box, Button, Card, CardContent, CardHeader, Container, Grid, TextField, Typography, useTheme } from '@material-ui/core';
+import { Avatar, Box, Button,  Container, Grid, TextField, Typography, useTheme } from '@material-ui/core';
 import React, { useEffect,useState } from 'react'
 import InsertLinkIcon from '@material-ui/icons/InsertLink';
 import ImageIcon from '@material-ui/icons/Image';
@@ -12,8 +12,8 @@ import { uncodeSlug } from 'Helpers/createSlug';
 import useAxios from 'Hooks/useAxios';
 
 export default function CommunityPage(props) {
-    let location = useLocation();
-    let theme = useTheme();
+    const location = useLocation();
+    const theme = useTheme();
     const classes = useStyles();
     const params = useParams();
     
@@ -21,7 +21,7 @@ export default function CommunityPage(props) {
     const [posts,setPosts] = useState([]);
     const data = useSelector(state => state.auth);
 
-    let community_name = uncodeSlug(params.id);
+    const community_name = uncodeSlug(params.id);
     const communityResponse = useAxios(`community/${community_name}`,'GET');
 
     
@@ -40,17 +40,17 @@ export default function CommunityPage(props) {
     },[params,communityResponse.data,data,posts.length])
 
     const getPosts = async() => {
-        let query = communityResponse.data && communityResponse.data[0]._id;
+        const query = communityResponse.data && communityResponse.data[0]._id;
         if(communityResponse.data ) {
-            let getPosts = await withData(`post/${query}`,'GET');
+            const getPosts = await withData(`post/${query}`,'GET');
             setPosts(getPosts)
         }
     }
 
     const joinCommunity = async() => {
         if(communityResponse && communityResponse.data && data.user.length > 0) {
-              let community_name = uncodeSlug(params.id);
-              let joinCommunity = await withData(`communityMember/join/${communityResponse.data[0]._id}`,'POST',{name:community_name});
+              const community_name = uncodeSlug(params.id);
+              await withData(`communityMember/join/${communityResponse.data[0]._id}`,'POST',{name:community_name});
               setMember(true);
         }
     }
@@ -58,11 +58,10 @@ export default function CommunityPage(props) {
     const checkMembership = async() => {
   
         if(communityResponse && communityResponse.data && data.user.length > 0) {
-            let community_name = uncodeSlug(params.id);
-            console.log(communityResponse.data[0]._id);
-            let getMembers = await withData(`communityMember/members/${communityResponse.data[0]._id}`,'GET');
+            const community_name = uncodeSlug(params.id);
+            const getMembers = await withData(`communityMember/members/${communityResponse.data[0]._id}`,'GET');
     
-            let hasMember = getMembers.data.filter((member) => member.member_id == data.user[0]._id && member.community_name == community_name);
+            const hasMember = getMembers.data.filter((member) => member.member_id == data.user[0]._id && member.community_name == community_name);
             hasMember.length > 0 ? setMember(true) : setMember(false);
          
             

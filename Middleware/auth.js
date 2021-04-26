@@ -1,11 +1,8 @@
-let express = require('express');
-let passport = require('passport');
+const express = require('express');
+const passport = require('passport');
 require('../passport.config');
 
 function isAuth(req,res,next) {
-
-     console.log(req.isAuthenticated());
-
     if(req.isAuthenticated()) {
         return next();
     } else {

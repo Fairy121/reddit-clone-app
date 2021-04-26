@@ -9,8 +9,8 @@ import { useStyles } from './style';
 export default function NavbarModal(props) {
     const classes = useStyles();
     
-    let allCommunities = useAxios('community','GET').data;
-    let filteredCommunities = allCommunities && allCommunities.filter(community => community.name.toLowerCase().includes(props.search));
+    const allCommunities = useAxios('community','GET').data;
+    const filteredCommunities = allCommunities && allCommunities.filter(community => community.name.toLowerCase().includes(props.search));
 
 
         

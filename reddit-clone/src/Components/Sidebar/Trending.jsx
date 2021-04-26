@@ -1,5 +1,4 @@
 import { List, ListItem, Typography } from '@material-ui/core'
-import axios from 'axios';
 import { withData } from 'Components/API/withData';
 import { createSlug } from 'Helpers/createSlug';
 import React, { useEffect, useState } from 'react'
@@ -12,12 +11,11 @@ export default function Trending(props) {
 
      useEffect(() => {
           getAllCommunities();
-          console.log(allCommunities);
+         
      }, [allCommunities])
 
    const getAllCommunities = async() => {
       let communities = await withData('community','GET');
-      let date = new Date();
       if(communities) {
           if(!allCommunities || allCommunities.data.length <= 0 || allCommunities.data.length !== communities.data.length ) {
                setAllCommunities(communities);

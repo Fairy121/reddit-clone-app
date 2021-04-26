@@ -1,8 +1,6 @@
 import { AppBar, Avatar, Typography,Paper,IconButton,Toolbar,Container,Box, makeStyles, TextField, List, ListItem, Button } from '@material-ui/core'
 import React, { useEffect, useState } from 'react'
 import {useStyles} from './style';
-import withAuth from '../API/withAuth';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import AuthModal from '../Auth/AuthModal';
 import { withData } from '../API/withData';
 import AuthNavbarMenu from './AuthNavbarMenu';
@@ -16,14 +14,10 @@ import NavbarModal from './navbarModal';
 function Navbar(props) {
     const [open,setOpen] = useState(false);
     const [modal,setModal] = useState('');
-    const [searchModal,setSearchModal] = useState(false);
     const dispatch = useDispatch();
     const classes = useStyles();
-
-    let [value,handleForm] = useForm(['search']);
-   
-   
-    let SearchModal = useModal();
+    const [value,handleForm] = useForm(['search']);
+    const SearchModal = useModal();
     
     const setCurrentModal = (modal) => {
         setModal(modal);
@@ -38,7 +32,7 @@ function Navbar(props) {
 
     useEffect(() => {
         async function loggedIn() {
-            let logged = await withData('user/loggedIn','GET');
+            const logged = await withData('user/loggedIn','GET');
             if(logged && logged.data.user) {
              dispatch(LOGIN_USER(logged.data.user));
             }

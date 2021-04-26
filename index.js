@@ -34,10 +34,10 @@ app.use(passport.session());
 require('./db');
 
 
-let userRoute = require('./Routes/user');
-let communityRoute = require('./Routes/community');
-let communityMemberRoute = require('./Routes/communityMember');
-let postRoute = require('./Routes/post');
+const userRoute = require('./Routes/user');
+const communityRoute = require('./Routes/community');
+const communityMemberRoute = require('./Routes/communityMember');
+const postRoute = require('./Routes/post');
 
 
 

@@ -1,22 +1,21 @@
 
-import { AppBar, Avatar, Typography,Paper,IconButton,Toolbar,Container,Box, makeStyles, TextField, List, ListItem, Button } from '@material-ui/core'
-import React, { useState,useEffect } from 'react'
+import { Avatar, Typography,Paper,Box, makeStyles, TextField, List, ListItem, Button } from '@material-ui/core'
+import React, { useState} from 'react'
 import {useStyles} from './style';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import ExpandLess from '@material-ui/icons/ExpandLess';
 import { withData } from '../API/withData';
 import { connect, useDispatch } from 'react-redux';
-import { LOGOUT_USER } from 'Redux/actions/Creators/AuthCreator';
 import useAxios from 'Hooks/useAxios';
 
 function AuthNavbarMenu(props) {
     const classes = useStyles();
     const [showDropdown,setDropdown] = useState(false);
-    let dispatch = useDispatch();
-    let getUser = useAxios('user/authUser','GET').data;
+    const dispatch = useDispatch();
+    const getUser = useAxios('user/authUser','GET').data;
    
     const logOut = async() => {
-        let logoutUser = await withData('user/logout','GET');
+        const logoutUser = await withData('user/logout','GET');
          dispatch({type:'LOGOUT_USER'});
 
     }

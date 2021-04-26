@@ -1,4 +1,4 @@
-import { Box, Container, Typography,TextField, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Button } from '@material-ui/core'
+import { Container, Typography, FormControl, FormLabel, RadioGroup, FormControlLabel, Radio, Button } from '@material-ui/core'
 import { Alert } from '@material-ui/lab';
 import React, { useState } from 'react'
 import { withData } from '../../API/withData';
@@ -14,13 +14,12 @@ export default function CreateCommunity(props) {
     }
     const createCommunity = async(e) => {
         e.preventDefault();
-        let form = e.currentTarget;
-        let name = form['Name'].value;
-        let desc = form['Description'].value;
-        let type = radioValue;
+        const form = e.currentTarget;
+        const name = form['Name'].value;
+        const desc = form['Description'].value;
+        const type = radioValue;
 
-        let newCommunity = await withData('community','POST',{name,type,desc});
-        console.log(newCommunity);
+        const newCommunity = await withData('community','POST',{name,type,desc});
         setMsg(newCommunity.data);
 
     }
