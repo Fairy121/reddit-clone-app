@@ -4,12 +4,12 @@ import { ThemeProvider } from '@material-ui/core';
 import { theme } from './Components/Theme/theme';
 import Navbar from './Components/Navbar/navbar';
 import Main from './Components/Main/main';
-import {BrowserRouter as Router} from 'react-router-dom';
+import {BrowserRouter as Router, HashRouter} from 'react-router-dom';
 
 
 function App() {
   return (
-    <Router>
+    <HashRouter>
       <ThemeProvider theme={theme}>
         <div className="App">
         
@@ -18,7 +18,7 @@ function App() {
           
         </div>
       </ThemeProvider>
-    </Router>
+    </HashRouter>
   );
 }
 

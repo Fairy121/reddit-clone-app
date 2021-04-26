@@ -50,7 +50,7 @@ import {LOGIN_USER,LOGIN_USER_FAILURE} from 'Redux/actions/Creators/AuthCreator'
     <Typography align='left' variant='h1'>Login</Typography>
     <form onSubmit={loginUser} className={classes.form}>
         <TextField name='username' className={classes.input} fullWidth size='medium' placeholder='Username' variant='outlined'></TextField>
-        <TextField name='password' className={classes.input} fullWidth size='medium' placeholder='Password' variant='outlined'></TextField>
+        <TextField type='password' name='password' className={classes.input} fullWidth size='medium' placeholder='Password' variant='outlined'></TextField>
         <Button type='submit' size='large' className={classes.formBtn} disableElevation variant='contained'>
             <Typography variant='subtitle2'>Login</Typography>
         </Button> 

@@ -34,7 +34,7 @@ export default function Signup(props) {
           <Typography align='left' variant='h1'>Sign Up</Typography>
             <form type='submit' onSubmit={RegisterUser} className={classes.form}>
                 <TextField name='username' className={classes.input} fullWidth size='medium' placeholder='Username' variant='outlined'></TextField>
-                <TextField name='password' className={classes.input} fullWidth size='medium' placeholder='Password' variant='outlined'></TextField>
+                <TextField type='password' name='password' className={classes.input} fullWidth size='medium' placeholder='Password' variant='outlined'></TextField>
                 <Button type='submit' size='large' className={classes.formBtn} disableElevation variant='contained'>
                     <Typography variant='subtitle2'>Sign Up</Typography>
                 </Button> 
